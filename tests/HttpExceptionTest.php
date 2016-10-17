@@ -11,6 +11,7 @@ use Fuzz\HttpException\LengthRequiredHttpException;
 use Fuzz\HttpException\MethodNotAllowedHttpException;
 use Fuzz\HttpException\NotAcceptableHttpException;
 use Fuzz\HttpException\NotFoundHttpException;
+use Fuzz\HttpException\NotImplementedHttpException;
 use Fuzz\HttpException\PreconditionFailedHttpException;
 use Fuzz\HttpException\PreconditionRequiredHttpException;
 use Fuzz\HttpException\ServiceUnavailableHttpException;
@@ -182,6 +183,14 @@ class HttpExceptionTest extends TestCase
 		$exception = new UnsupportedMediaTypeHttpException('foo');
 		$this->assertEquals(415, $exception->getStatusCode());
 		$this->assertEquals('unsupported_media_type', $exception->getErrorName());
+		$this->assertEquals('foo', $exception->getMessage());
+	}
+
+	public function testNotImplementedHttpException()
+	{
+		$exception = new NotImplementedHttpException('foo');
+		$this->assertEquals(501, $exception->getStatusCode());
+		$this->assertEquals('not_implemented', $exception->getErrorName());
 		$this->assertEquals('foo', $exception->getMessage());
 	}
 }
