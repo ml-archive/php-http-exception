@@ -34,31 +34,31 @@ class HttpExceptionTest extends TestCase
 
 	public function testItCanGetStatusCode()
 	{
-		$exception = new StubException('message', 'formatted', ['foo' => 'bar'], ['header' => 'value'], new \Exception);
+		$exception = new StubException('message', ['foo' => 'bar'], 'formatted', ['header' => 'value'], new \Exception);
 		$this->assertEquals(404, $exception->getStatusCode());
 	}
 
 	public function testItCanGetErrorMessage()
 	{
-		$exception = new StubException('message', 'formatted', ['foo' => 'bar'], ['header' => 'value'], new \Exception);
+		$exception = new StubException('message', ['foo' => 'bar'], 'formatted', ['header' => 'value'], new \Exception);
 		$this->assertEquals('message', $exception->getMessage());
 	}
 
 	public function testItCanGetErrorFormatted()
 	{
-		$exception = new StubException('message', 'formatted', ['foo' => 'bar'], ['header' => 'value'], new \Exception);
+		$exception = new StubException('message', ['foo' => 'bar'], 'formatted', ['header' => 'value'], new \Exception);
 		$this->assertEquals('formatted', $exception->getErrorFormatted());
 	}
 
 	public function testItCanGetErrorData()
 	{
-		$exception = new StubException('message', 'formatted', ['foo' => 'bar'], ['header' => 'value'], new \Exception);
+		$exception = new StubException('message', ['foo' => 'bar'], 'formatted', ['header' => 'value'], new \Exception);
 		$this->assertEquals(['foo' => 'bar'], $exception->getErrorData());
 	}
 
 	public function testItCanGetErrorHeaders()
 	{
-		$exception = new StubException('message', 'formatted', ['foo' => 'bar'], ['header' => 'value'], new \Exception);
+		$exception = new StubException('message', ['foo' => 'bar'], 'formatted', ['header' => 'value'], new \Exception);
 		$this->assertEquals(['header' => 'value'], $exception->getHeaders());
 	}
 
@@ -192,7 +192,7 @@ class StubException extends HttpException
 
 	protected $error_name = 'stub_exception';
 
-	public function __construct($message = null, $error_formatted = null, array $error_data = [], array $headers = [], \Exception $previous = null)
+	public function __construct($message = null, array $error_data = [], $error_formatted = null, array $headers = [], \Exception $previous = null)
 	{
 		parent::__construct($message, $error_formatted, $error_data, $headers, self::HTTP_CODE, $previous);
 	}

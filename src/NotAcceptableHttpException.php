@@ -27,7 +27,7 @@ class NotAcceptableHttpException extends HttpException
 	 * @param array      $headers
 	 * @param \Exception $previous
 	 */
-	public function __construct($message = null, $error_formatted = null, array $error_data = [], array $headers = [], \Exception $previous = null)
+	public function __construct($message = null, array $error_data = [], $error_formatted = null, array $headers = [], \Exception $previous = null)
 	{
 		parent::__construct($message, $error_formatted, $error_data, $headers, self::HTTP_CODE, $previous);
 	}
