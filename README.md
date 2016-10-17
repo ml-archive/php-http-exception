@@ -19,5 +19,5 @@ throw new AccessDeniedHttpException('Access denied.');
 `phpunit --coverage-html tests/coverage && open tests/coverage/index.html`
 
 ## TODO
-1. Support all HTTP status codes
+1. Support all appropriate HTTP status codes
 1. Improve exception API
