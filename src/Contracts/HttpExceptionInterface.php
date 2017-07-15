@@ -16,7 +16,7 @@ interface HttpExceptionInterface
 	 *
 	 * @return array
 	 */
-	public function getHeaders();
+	public function getHttpHeaders();
 
 	/**
 	 * Data corresponding to the error
@@ -32,12 +32,12 @@ interface HttpExceptionInterface
 	 *
 	 * @return string
 	 */
-	public function getErrorName();
+	public function getError();
 
 	/**
 	 * A user-friendly error description
 	 *
 	 * @return string
 	 */
-	public function getErrorFormatted();
+	public function getUserMessage();
 }
