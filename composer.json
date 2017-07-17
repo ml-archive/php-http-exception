@@ -19,5 +19,16 @@
 			"Fuzz\\HttpException\\": "src/",
 			"Fuzz\\HttpException\\Tests\\": "tests/"
 		}
+	},
+	"scripts": {
+		"test": [
+			"vendor/bin/phpunit"
+		],
+		"test-coverage": [
+			"vendor/bin/phpunit --coverage-html tests/coverage"
+		],
+		"open-coverage": [
+			"open -a \"Google Chrome\" tests/coverage/index.html"
+		]
 	}
 }

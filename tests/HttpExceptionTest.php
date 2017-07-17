@@ -7,6 +7,7 @@ use Fuzz\HttpException\BadRequestHttpException;
 use Fuzz\HttpException\ConflictHttpException;
 use Fuzz\HttpException\GoneHttpException;
 use Fuzz\HttpException\HttpException;
+use Fuzz\HttpException\InternalServerErrorHttpException;
 use Fuzz\HttpException\LengthRequiredHttpException;
 use Fuzz\HttpException\MethodNotAllowedHttpException;
 use Fuzz\HttpException\NotAcceptableHttpException;
@@ -24,9 +25,13 @@ class HttpExceptionTest extends TestCase
 {
 	public function testItCanGetError()
 	{
-		$exception = new HttpException();
+		$exception = new HttpException(500, 'internal_server_error', 'Internal Server Error', [], 'Ooops!!!', 'Seems one of our developers unplugged the server again!', [], new \Exception('some error'));
 		$exception->setError('stub_exception');
+		$exception->setUserTitle('some title');
+		$exception->setStatusCode(1000);
 		$this->assertEquals('stub_exception', $exception->getError());
+		$this->assertEquals('some title', $exception->getUserTitle());
+		$this->assertEquals(1000, $exception->getStatusCode());
 	}
 
 	public function testItCanGetStatusCode()
@@ -183,6 +188,14 @@ class HttpExceptionTest extends TestCase
 		$exception = new UnsupportedMediaTypeHttpException('foo', [], 'user title');
 		$this->assertEquals(415, $exception->getStatusCode());
 		$this->assertEquals('unsupported_media_type', $exception->getError());
+		$this->assertEquals('foo', $exception->getErrorDescription());
+	}
+
+	public function testInternalServerErrorHttpException()
+	{
+		$exception = new InternalServerErrorHttpException('foo', [], 'user title');
+		$this->assertEquals(500, $exception->getStatusCode());
+		$this->assertEquals('internal_server_error', $exception->getError());
 		$this->assertEquals('foo', $exception->getErrorDescription());
 	}
 
