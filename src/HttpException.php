@@ -80,13 +80,8 @@ class HttpException extends RuntimeException implements HttpExceptionInterface
 		$this->userMessage      = $userMessage ?? 'Seems one of our developers unplugged the server again!';
 		$this->httpHeaders      = $httpHeaders;
 
-		$originalMessage = '';
-		$originalCode    = 0;
-
-		if ($previous) {
-			$originalMessage = $previous->getMessage();
-			$originalCode    = $previous->getCode();
-		}
+		$originalMessage = $errorDescription;
+		$originalCode    = $statusCode;
 
 		parent::__construct($originalMessage, $originalCode, $previous);
 	}
