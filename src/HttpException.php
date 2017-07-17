@@ -70,14 +70,14 @@ class HttpException extends RuntimeException implements HttpExceptionInterface
 	 * @param string          $userMessage
 	 * @param \Exception|null $previous
 	 */
-	public function __construct(int $statusCode = 500, string $error = 'internal_server_error', string $errorDescription = 'Internal Server Error', $errorData = [], string $userTitle = 'Ooops!!!', $userMessage = 'Seems one of our developers unplugged the server again!', array $httpHeaders = [], \Exception $previous = null)
+	public function __construct(int $statusCode = null, string $error = null, string $errorDescription = null, $errorData = [], string $userTitle = null, $userMessage = null, array $httpHeaders = [], \Exception $previous = null)
 	{
-		$this->statusCode       = $statusCode;
-		$this->error            = $error;
-		$this->errorDescription = $errorDescription;
+		$this->statusCode       = $statusCode ?? 500;
+		$this->error            = $error ?? 'internal_server_error';
+		$this->errorDescription = $errorDescription ?? 'Internal Server Error';
 		$this->errorData        = $errorData;
-		$this->userTitle        = $userTitle;
-		$this->userMessage      = $userMessage;
+		$this->userTitle        = $userTitle ?? 'Ooops!!!';
+		$this->userMessage      = $userMessage ?? 'Seems one of our developers unplugged the server again!';
 		$this->httpHeaders      = $httpHeaders;
 
 		$originalMessage = '';
