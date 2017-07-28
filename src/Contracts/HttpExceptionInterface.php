@@ -40,4 +40,16 @@ interface HttpExceptionInterface
 	 * @return string
 	 */
 	public function getUserMessage();
+
+	/**
+	 * @return string
+	 */
+	public function getErrorDescription();
+
+	/**
+	 * A user friendly title for the error.
+	 *
+	 * @return string
+	 */
+	public function getUserTitle();
 }
