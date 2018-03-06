@@ -139,7 +139,7 @@ class HttpException extends RuntimeException implements HttpExceptionInterface
 	 *
 	 * @return string
 	 */
-	public function getError(): string
+	public function getError()
 	{
 		return $this->error;
 	}
@@ -163,7 +163,7 @@ class HttpException extends RuntimeException implements HttpExceptionInterface
 	 *
 	 * @return string
 	 */
-	public function getErrorDescription(): string
+	public function getErrorDescription()
 	{
 		return $this->errorDescription;
 	}
@@ -211,7 +211,7 @@ class HttpException extends RuntimeException implements HttpExceptionInterface
 	 *
 	 * @return string
 	 */
-	public function getUserTitle(): string
+	public function getUserTitle()
 	{
 		return $this->userTitle;
 	}
